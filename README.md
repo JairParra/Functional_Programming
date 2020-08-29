@@ -19,7 +19,7 @@ let fast_exp (base, power) =
     in 
     fast_exp_aux(base,power,1)
 ;; 
+```
 
 ![](Lambda-letter-lowercase-symbol.svg)
 
-```
