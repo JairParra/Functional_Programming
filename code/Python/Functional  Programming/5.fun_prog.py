@@ -51,17 +51,28 @@ for tup in zip(abc, nums):
 
 ### 3. map  ### 
 
-def mapper(fun, l:list): 
+def mapper_noob(fun, l:list): 
     """
     Applies a function to every element in the list 
     """
     return [fun(elem) for elem in l] 
 
 
+def mapper(fun, l:list): 
+    """
+    Functional programming version without loops
+    """
+    if len(l) == 0: 
+        return [] 
+    else: 
+        # pop last element, and recurse 
+        return [fun(l.pop())] + mapper(fun, l)
+
 ### TESTS ### 
 square = lambda x: x**2
 pairs = [2,4,6,8,10] 
-print("squred list: ", mapper(square, pairs))
+print("squred list: ", mapper_noob(square, pairs))
+print("squared_list: ", mapper(square, pairs))
 
 squares = [x for x in mapper(square, pairs)]
 ### TESTS ### 
@@ -100,6 +111,29 @@ print([x for x in filter(lambda x: x< 6, pairs)])
 ### BONUS: masking ## 
 mask = lambda f, l: [f(x) for x in l] 
 print(mask(even, nums))
+
+
+###############################################################################
+
+### 5. any  ### 
+
+def any_fun(test, l:list): 
+    """
+    Checks is a condition is satisfied in a list 
+    """
+    for elem in l: 
+        if test(elem): 
+            return True 
+        
+def all_fun(test, l:list): 
+    """
+    Checks if all elements satisfy a condition 
+    """
+    for elem in l: 
+        if not test(elem): 
+            return False 
+    return True 
+
 
 ###############################################################################
 
