@@ -1,11 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
+factorial.py 
 
-This is a temporary script file.
+desc: This script demonstrates multiple implementations of the fast factorial function, 
+        along with usage examples. 
+        
+@author: jairp
 """
+###############################################################################
 
+# 1. Imports 
 import time 
+
+###############################################################################
+
+# 2. Functions 
+
+""" 
+NOTE: 
+    - Tail Recursion: There should be only one recursive call and it should be 
+      outermost! 
+"""
 
 # Clear version 
 def fastfact(n:int): 
@@ -31,12 +46,12 @@ def fastfact(n:int):
         
     return helper(n,1) 
 
-
+# Short version (do not write code like this!! )
 def fastfact2(n:int): 
     helper = lambda m, acc: acc if m==0 else helper(m-1,m*acc) 
     return helper(n,1)
 
-
+# Definition 
 def slowfact(n:int): 
     """
     Calculates the factorial using the definition: n! = n*(n-1)
@@ -45,6 +60,10 @@ def slowfact(n:int):
         return 1 
     else: 
         return n*slowfact(n-1) 
+    
+###############################################################################
+
+# 3. Speed tests 
     
 
 # TEST 
@@ -69,22 +88,5 @@ t1 = time.time_ns()
 print("fasctfact took {} miliseconds".format(t1-t0)) 
 
 
-def replace_letter(word): 
-    # letters to interchange 
-    letters = 'abcdefghijklmnopqrstuvwxyz'
-    
-    # splitting and replacing functions 
-    splits = lambda word: [(word[:i],word[i:]) for i in range(len(word)) if word[i:]]
-    replaces = lambda split_l: {w1 + letter + w2[1:] for w1,w2 in split_l if w2 for letter in letters}
-    
-    # result as a sorted list 
-    replace_l = sorted(replaces(splits(word))-{word})
-    
-    return replace_l
-    
 
-
-print("All replacements of UwU: \n",replace_letter("UwU") )
-    
-    
     
