@@ -8,12 +8,11 @@ let rec fib n =
   
 (*Tail-recursive version*)
 let rec tailfib n = 
-		let rec helper(n,a,b) = (*Subfunction with extra parameters a and b*)
-    if n=0 then a  (*Base case 1*)
-    else if n=1 then b  (*Base case 2 *)
-    else 
-				(*Tail recursive call: decrease n , cumulate result in third argument*)
-      helper(n-1, b, a+b) 
-		in 
-		helper(n,0,1) (*Repeat procedure n times *)
-;;
+	let rec helper(n,a,b) = (*Subfunction with extra parameters a and b*)
+		if n=0 then a  (*Base case 1*)
+		else if n=1 then b  (*Base case 2 *)
+		else 
+			(*Tail recursive call: decrease n , cumulate result in third argument*)
+			helper(n-1, b, a+b) 
+	in 
+	helper(n,0,1) (*Repeat procedure n times *) 
